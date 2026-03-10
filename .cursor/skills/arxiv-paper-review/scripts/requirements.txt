@@ -1,0 +1,3 @@
+paperscraper
+weasyprint
+jinja2
