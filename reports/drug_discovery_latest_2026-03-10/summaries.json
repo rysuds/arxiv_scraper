@@ -1,0 +1,92 @@
+[
+  {
+    "title": "FuseDiff: Symmetry-Preserving Joint Diffusion for Dual-Target Structure-Based Drug Design",
+    "summary": "FuseDiff tackles dual-target drug design by jointly generating one ligand and two target-specific binding poses in a single end-to-end diffusion model. Its dual-target local context fusion preserves shared molecular topology while allowing different geometries for each pocket. The paper reports state-of-the-art docking performance and introduces a more systematic way to assess dual-target pose quality before expensive pose search.",
+    "key_findings": [
+      "Jointly models ligand graph and both pocket-specific poses in one framework",
+      "Maintains symmetry and topological consistency across dual-target settings",
+      "Achieves state-of-the-art docking performance on benchmark evaluations"
+    ]
+  },
+  {
+    "title": "Mozi: Governed Autonomy for Drug Discovery LLM Agents",
+    "summary": "Mozi proposes a governed autonomy architecture for LLM agents in drug discovery pipelines, combining free-form reasoning with structured execution. The system separates control and workflow planes, enforces tool-use constraints, and adds human-in-the-loop checkpoints at high-uncertainty stages. On PharmaBench and case studies, it shows stronger orchestration reliability for long-horizon tasks such as candidate generation with safety filters.",
+    "key_findings": [
+      "Introduces supervisor-worker governance for safer agent tool usage",
+      "Adds stateful workflow graphs that map to canonical drug discovery stages",
+      "Demonstrates improved orchestration accuracy and robustness on PharmaBench"
+    ]
+  },
+  {
+    "title": "Designing the Haystack: Programmable Chemical Space for Generative Molecular Discovery",
+    "summary": "This work reframes chemical space as a programmable object rather than a fixed latent distribution. SpaceGFN lets users define building blocks and reaction rules, then uses a GFlowNet to sample property-biased molecules within that designed space. Across 96 targets, it reports strong optimization under synthetic constraints and supports reaction-consistent editing for practical lead refinement.",
+    "key_findings": [
+      "Decouples chemical space design from exploration with programmable constraints",
+      "Uses evolution-inspired and pseudo-natural-product spaces to bias discovery",
+      "Shows broad optimization gains while retaining structural diversity"
+    ]
+  },
+  {
+    "title": "Toward Closed-loop Molecular Discovery via Language Model, Property Alignment and Strategic Search",
+    "summary": "Trio combines fragment language modeling, reinforcement learning, and Monte Carlo tree search to create a closed-loop molecular discovery process. The method balances novelty exploration with property-guided exploitation, instead of over-optimizing only affinity. Reported results include stronger binding affinity, drug-likeness, synthetic accessibility, and substantially improved diversity versus prior approaches.",
+    "key_findings": [
+      "Integrates LM generation, RL, and strategic search in one closed loop",
+      "Improves binding affinity (+7.85%), drug-likeness (+11.10%), and synthetic accessibility (+12.05%)",
+      "Expands molecular diversity by more than fourfold"
+    ]
+  },
+  {
+    "title": "FRAGMENTA: End-to-end Fragmentation-based Generative Model with Agentic Tuning for Drug Lead Optimization",
+    "summary": "FRAGMENTA introduces an end-to-end fragment-based generator that learns fragmentation as a vocabulary selection problem via dynamic Q-learning. It also adds agentic tuning where domain experts can iteratively refine objectives through natural language feedback. In cancer lead optimization experiments, the framework found nearly twice as many high-scoring molecules as baselines.",
+    "key_findings": [
+      "Replaces heuristic fragmentation with learned, optimization-aware fragmentation",
+      "Enables direct expert-in-the-loop objective tuning through an agent interface",
+      "Finds roughly 2x more high-scoring candidates in reported experiments"
+    ]
+  },
+  {
+    "title": "SiDGen: Structure-informed Diffusion for Generative modeling of Ligands for Proteins",
+    "summary": "SiDGen addresses the tradeoff between rich pocket conditioning and computational cost in structure-based design. It introduces a topological information bottleneck that compresses residue-level representations before pairwise reasoning, reducing memory while preserving binding-relevant structure. The paper reports state-of-the-art results on CrossDocked2020 and DUD-E with improved efficiency.",
+    "key_findings": [
+      "Uses a learned bottleneck to reduce pairwise complexity from full-scale pocket modeling",
+      "Preserves pocket-aware fidelity while improving memory and compute efficiency",
+      "Achieves state-of-the-art benchmark performance for ligand generation"
+    ]
+  },
+  {
+    "title": "Refine Drugs, Don't Complete Them: Uniform-Source Discrete Flows for Fragment-Based Drug Discovery",
+    "summary": "InVirtuoGen proposes a discrete flow model that shifts molecular generation from masked completion to iterative refinement. By predicting all positions at each denoising step, it decouples generation behavior from strict sequence-length constraints and improves quality-diversity tradeoffs. It reports state-of-the-art practical molecular optimization results and stronger docking-oriented lead optimization outcomes.",
+    "key_findings": [
+      "Introduces refinement-first discrete flow generation for fragmented SMILES",
+      "Establishes a stronger quality-diversity frontier in de novo generation",
+      "Sets a new state of the art on practical molecular optimization benchmarks"
+    ]
+  },
+  {
+    "title": "POLO: Preference-Guided Multi-Turn Reinforcement Learning for Lead Optimization",
+    "summary": "POLO improves sample efficiency in lead optimization by training on full optimization trajectories instead of isolated single-turn edits. Its Preference-Guided Policy Optimization objective combines trajectory-level rewards with turn-level preference ranking signals. The paper reports strong gains, including 84% success on single-property tasks and 50% on multi-property tasks with only 500 oracle calls.",
+    "key_findings": [
+      "Learns from complete optimization trajectories for better chemical search behavior",
+      "Combines dense turn-level preferences with trajectory-level reinforcement signals",
+      "Delivers large sample-efficiency gains under tight oracle-evaluation budgets"
+    ]
+  },
+  {
+    "title": "DMol: A Highly Efficient and Chemical Motif-Preserving Molecule Generation Platform",
+    "summary": "DMol presents a graph diffusion platform designed for faster and more valid small-molecule generation. Compared to prior baselines, it improves validity, cuts required diffusion steps by at least 10x, and reduces runtime by around half. A compressed motif-aware variant further boosts validity and novelty while simplifying generation over ring-rich chemistry.",
+    "key_findings": [
+      "Improves validity over strong graph diffusion baselines",
+      "Reduces diffusion steps by at least 10x with major runtime savings",
+      "Motif-compressed variant further improves validity and novelty"
+    ]
+  },
+  {
+    "title": "GenMol: A Drug Discovery Generalist with Discrete Diffusion",
+    "summary": "GenMol is a single discrete diffusion model that supports multiple drug discovery tasks, including de novo generation, fragment-constrained generation, hit generation, and lead optimization. It uses fragment-level SAFE sequences and remasking to efficiently explore and optimize molecular structures. The work reports state-of-the-art task performance while providing a unified model design instead of task-specific pipelines.",
+    "key_findings": [
+      "Unifies multiple molecular design tasks in one diffusion framework",
+      "Uses fragment remasking and molecular context guidance for optimization",
+      "Achieves state-of-the-art results on goal-directed hit generation and lead optimization"
+    ]
+  }
+]
