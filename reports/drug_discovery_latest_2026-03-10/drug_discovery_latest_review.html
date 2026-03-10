@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Drug Discovery arXiv Review</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
+
+  @page {
+    size: A4;
+    margin: 2cm 2.5cm;
+    @bottom-center {
+      content: "Page " counter(page) " of " counter(pages);
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      color: #999;
+    }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background: #fff;
+  }
+
+  .cover {
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 85vh;
+    padding: 3cm 0;
+  }
+
+  .cover h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 28pt;
+    font-weight: 700;
+    color: #111;
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+  }
+
+  .cover .subtitle {
+    font-size: 13pt;
+    color: #666;
+    margin-bottom: 2em;
+  }
+
+  .cover .meta {
+    font-size: 10pt;
+    color: #888;
+    border-top: 2px solid #e0e0e0;
+    padding-top: 1em;
+  }
+
+  .cover .meta span {
+    display: block;
+    margin-bottom: 0.3em;
+  }
+
+  .overview {
+    margin-bottom: 2em;
+    padding: 1.2em 1.5em;
+    background: #f8f8f5;
+    border-left: 4px solid #f54e00;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .overview h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 16pt;
+    margin-bottom: 0.5em;
+    color: #111;
+  }
+
+  .overview p {
+    font-size: 10.5pt;
+    color: #333;
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 2em;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e0e0e0;
+  }
+
+  .paper-entry {
+    position: relative;
+    margin-bottom: 2em;
+    padding-bottom: 1.5em;
+    border-bottom: 1px solid #f0f0f0;
+    page-break-inside: avoid;
+  }
+
+  .paper-entry::before {
+    content: '';
+    position: absolute;
+    left: -2em;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #f54e00;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px #f54e00;
+    z-index: 1;
+  }
+
+  .paper-date {
+    font-size: 9pt;
+    font-weight: 600;
+    color: #f54e00;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3em;
+  }
+
+  .paper-title {
+    font-family: 'Source Serif 4', serif;
+    font-size: 13pt;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 0.2em;
+    line-height: 1.3;
+  }
+
+  .paper-authors {
+    font-size: 9pt;
+    color: #777;
+    margin-bottom: 0.6em;
+    font-style: italic;
+  }
+
+  .paper-doi {
+    font-size: 8pt;
+    color: #aaa;
+    margin-bottom: 0.5em;
+  }
+
+  .paper-doi a {
+    color: #f54e00;
+    text-decoration: none;
+  }
+
+  .paper-summary {
+    font-size: 10pt;
+    color: #333;
+    line-height: 1.65;
+  }
+
+  .paper-summary strong {
+    color: #111;
+  }
+
+  .key-findings {
+    margin-top: 0.5em;
+    padding-left: 1.2em;
+  }
+
+  .key-findings li {
+    font-size: 9.5pt;
+    color: #444;
+    margin-bottom: 0.25em;
+  }
+
+  .section-divider {
+    text-align: center;
+    margin: 2em 0;
+    color: #ccc;
+    font-size: 14pt;
+    letter-spacing: 0.5em;
+  }
+
+  .date-group-header {
+    font-family: 'Source Serif 4', serif;
+    font-size: 14pt;
+    font-weight: 700;
+    color: #111;
+    margin: 1.5em 0 1em;
+    padding-bottom: 0.3em;
+    border-bottom: 2px solid #1a1a1a;
+  }
+
+  .stats-bar {
+    display: flex;
+    gap: 2em;
+    margin-bottom: 1.5em;
+    padding: 0.8em 1.2em;
+    background: #fafafa;
+    border-radius: 4px;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-value {
+    font-size: 18pt;
+    font-weight: 700;
+    color: #f54e00;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 8pt;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <h1>Drug Discovery arXiv Review</h1>
+  <div class="subtitle">Arxiv Literature Review — Jan 2025 - Mar 2026</div>
+  <div class="meta">
+    <span><strong>Period:</strong> Jan 2025 - Mar 2026</span>
+    <span><strong>Papers reviewed:</strong> 10</span>
+    <span><strong>Generated:</strong> March 10, 2026</span>
+  </div>
+</div>
+
+
+<div class="overview">
+  <h2>Executive Summary</h2>
+  <p>Recent drug discovery papers on arXiv show a clear move from isolated molecule generation toward controllable, multi-step discovery pipelines. New methods combine diffusion or flow models with reinforcement learning, strategic search, and reaction-aware constraints to optimize multiple objectives at once. The latest work also improves practical reliability through governed agent architectures, sample-efficient optimization, and structure-aware design for protein-ligand systems. Overall, the field is progressing toward deployable, auditable AI systems for hit finding and lead optimization.</p>
+</div>
+
+
+<div class="stats-bar">
+  <div class="stat">
+    <span class="stat-value">10</span>
+    <span class="stat-label">Papers</span>
+  </div>
+  
+  <div class="stat">
+    <span class="stat-value">419</span>
+    <span class="stat-label">Day Span</span>
+  </div>
+  
+  
+  <div class="stat">
+    <span class="stat-value">68</span>
+    <span class="stat-label">Authors</span>
+  </div>
+  
+</div>
+
+<div class="timeline">
+
+  <div class="date-group-header">March 2026</div>
+  
+  <div class="paper-entry">
+    <div class="paper-date">2026-03-05</div>
+    <div class="paper-title">FuseDiff: Symmetry-Preserving Joint Diffusion for Dual-Target Structure-Based Drug Design</div>
+    
+    <div class="paper-authors">['Jianliang Wu', 'Anjie Qiao', 'Zhen Wang', 'Zhewei Wei', 'Sheng Chen']</div>
+    
+    
+    <div class="paper-doi"><a href="https://doi.org/http://arxiv.org/abs/2603.05567v1">http://arxiv.org/abs/2603.05567v1</a></div>
+    
+    <div class="paper-summary">FuseDiff tackles dual-target drug design by jointly generating one ligand and two target-specific binding poses in a single end-to-end diffusion model. Its dual-target local context fusion preserves shared molecular topology while allowing different geometries for each pocket. The paper reports state-of-the-art docking performance and introduces a more systematic way to assess dual-target pose quality before expensive pose search.</div>
+    
+    <ul class="key-findings">
+      
+      <li>Jointly models ligand graph and both pocket-specific poses in one framework</li>
+      
+      <li>Maintains symmetry and topological consistency across dual-target settings</li>
+      
+      <li>Achieves state-of-the-art docking performance on benchmark evaluations</li>
+      
+    </ul>
+    
+  </div>
+  
+  <div class="paper-entry">
+    <div class="paper-date">2026-03-04</div>
+    <div class="paper-title">Mozi: Governed Autonomy for Drug Discovery LLM Agents</div>
+    
+    <div class="paper-authors">['He Cao', 'Siyu Liu', 'Fan Zhang', 'Zijing Liu', 'Hao Li', 'Bin Feng', 'Shengyuan Bai', 'Leqing Chen', 'Kai Xie', 'Yu Li']</div>
+    
+    
+    <div class="paper-doi"><a href="https://doi.org/http://arxiv.org/abs/2603.03655v1">http://arxiv.org/abs/2603.03655v1</a></div>
+    
+    <div class="paper-summary">Mozi proposes a governed autonomy architecture for LLM agents in drug discovery pipelines, combining free-form reasoning with structured execution. The system separates control and workflow planes, enforces tool-use constraints, and adds human-in-the-loop checkpoints at high-uncertainty stages. On PharmaBench and case studies, it shows stronger orchestration reliability for long-horizon tasks such as candidate generation with safety filters.</div>
+    
+    <ul class="key-findings">
+      
+      <li>Introduces supervisor-worker governance for safer agent tool usage</li>
+      
+      <li>Adds stateful workflow graphs that map to canonical drug discovery stages</li>
+      
+      <li>Demonstrates improved orchestration accuracy and robustness on PharmaBench</li>
+      
+    </ul>
+    
+  </div>
+  
+
+  <div class="date-group-header">February 2026</div>
+  
+  <div class="paper-entry">
+    <div class="paper-date">2026-02-28</div>
+    <div class="paper-title">Designing the Haystack: Programmable Chemical Space for Generative Molecular Discovery</div>
+    
+    <div class="paper-authors">['Yuchen Zhu', 'Donghai Zhao', 'Yangyang Zhang', 'Yitong Li', 'Xiaorui Wang', 'Shuwang Li', 'Yue Kong', 'Beichen Zhang', 'Ricki Chen', 'Chang Liu', 'Xingcai Zhang', 'Tingjun Hou', 'Chang-Yu Hsieh']</div>
+    
+    
+    <div class="paper-doi"><a href="https://doi.org/http://arxiv.org/abs/2603.00614v1">http://arxiv.org/abs/2603.00614v1</a></div>
+    
+    <div class="paper-summary">This work reframes chemical space as a programmable object rather than a fixed latent distribution. SpaceGFN lets users define building blocks and reaction rules, then uses a GFlowNet to sample property-biased molecules within that designed space. Across 96 targets, it reports strong optimization under synthetic constraints and supports reaction-consistent editing for practical lead refinement.</div>
+    
+    <ul class="key-findings">
+      
+      <li>Decouples chemical space design from exploration with programmable constraints</li>
+      
+      <li>Uses evolution-inspired and pseudo-natural-product spaces to bias discovery</li>
+      
+      <li>Shows broad optimization gains while retaining structural diversity</li>
+      
+    </ul>
+    
+  </div>
+  
+
+  <div class="date-group-header">December 2025</div>
+  
+  <div class="paper-entry">
+    <div class="paper-date">2025-12-10</div>
+    <div class="paper-title">Toward Closed-loop Molecular Discovery via Language Model, Property Alignment and Strategic Search</div>
+    
+    <div class="paper-authors">['Junkai Ji', 'Zhangfan Yang', 'Dong Xu', 'Ruibin Bai', 'Jianqiang Li', 'Tingjun Hou', 'Zexuan Zhu']</div>
+    
+    
+    <div class="paper-doi"><a href="https://doi.org/http://arxiv.org/abs/2512.09566v2">http://arxiv.org/abs/2512.09566v2</a></div>
+    
+    <div class="paper-summary">Trio combines fragment language modeling, reinforcement learning, and Monte Carlo tree search to create a closed-loop molecular discovery process. The method balances novelty exploration with property-guided exploitation, instead of over-optimizing only affinity. Reported results include stronger binding affinity, drug-likeness, synthetic accessibility, and substantially improved diversity versus prior approaches.</div>
+    
+    <ul class="key-findings">
+      
+      <li>Integrates LM generation, RL, and strategic search in one closed loop</li>
+      
+      <li>Improves binding affinity (+7.85%), drug-likeness (+11.10%), and synthetic accessibility (+12.05%)</li>
+      
+      <li>Expands molecular diversity by more than fourfold</li>
+      
+    </ul>
+    
+  </div>
+  
+
+  <div class="date-group-header">November 2025</div>
+  
+  <div class="paper-entry">
+    <div class="paper-date">2025-11-25</div>
+    <div class="paper-title">FRAGMENTA: End-to-end Fragmentation-based Generative Model with Agentic Tuning for Drug Lead Optimization</div>
+    
+    <div class="paper-authors">['Yuto Suzuki', 'Paul Awolade', 'Daniel V. LaBarbera', 'Farnoush Banaei-Kashani']</div>
+    
+    
+    <div class="paper-doi"><a href="https://doi.org/http://arxiv.org/abs/2511.20510v2">http://arxiv.org/abs/2511.20510v2</a></div>
+    
+    <div class="paper-summary">FRAGMENTA introduces an end-to-end fragment-based generator that learns fragmentation as a vocabulary selection problem via dynamic Q-learning. It also adds agentic tuning where domain experts can iteratively refine objectives through natural language feedback. In cancer lead optimization experiments, the framework found nearly twice as many high-scoring molecules as baselines.</div>
+    
+    <ul class="key-findings">
+      
+      <li>Replaces heuristic fragmentation with learned, optimization-aware fragmentation</li>
+      
+      <li>Enables direct expert-in-the-loop objective tuning through an agent interface</li>
+      
+      <li>Finds roughly 2x more high-scoring candidates in reported experiments</li>
+      
+    </ul>
+    
+  </div>
+  
+  <div class="paper-entry">
+    <div class="paper-date">2025-11-12</div>
+    <div class="paper-title">SiDGen: Structure-informed Diffusion for Generative modeling of Ligands for Proteins</div>
+    
+    <div class="paper-authors">['Samyak Sanghvi', 'Nishant Ranjan', 'Tarak Karmakar']</div>
+    
+    
+    <div class="paper-doi"><a href="https://doi.org/http://arxiv.org/abs/2511.09529v3">http://arxiv.org/abs/2511.09529v3</a></div>
+    
+    <div class="paper-summary">SiDGen addresses the tradeoff between rich pocket conditioning and computational cost in structure-based design. It introduces a topological information bottleneck that compresses residue-level representations before pairwise reasoning, reducing memory while preserving binding-relevant structure. The paper reports state-of-the-art results on CrossDocked2020 and DUD-E with improved efficiency.</div>
+    
+    <ul class="key-findings">
+      
+      <li>Uses a learned bottleneck to reduce pairwise complexity from full-scale pocket modeling</li>
+      
+      <li>Preserves pocket-aware fidelity while improving memory and compute efficiency</li>
+      
+      <li>Achieves state-of-the-art benchmark performance for ligand generation</li>
+      
+    </ul>
+    
+  </div>
+  
+
+  <div class="date-group-header">September 2025</div>
+  
+  <div class="paper-entry">
+    <div class="paper-date">2025-09-30</div>
+    <div class="paper-title">Refine Drugs, Don't Complete Them: Uniform-Source Discrete Flows for Fragment-Based Drug Discovery</div>
+    
+    <div class="paper-authors">['Benno Kaech', 'Luis Wyss', 'Karsten Borgwardt', 'Gianvito Grasso']</div>
+    
+    
+    <div class="paper-doi"><a href="https://doi.org/http://arxiv.org/abs/2509.26405v1">http://arxiv.org/abs/2509.26405v1</a></div>
+    
+    <div class="paper-summary">InVirtuoGen proposes a discrete flow model that shifts molecular generation from masked completion to iterative refinement. By predicting all positions at each denoising step, it decouples generation behavior from strict sequence-length constraints and improves quality-diversity tradeoffs. It reports state-of-the-art practical molecular optimization results and stronger docking-oriented lead optimization outcomes.</div>
+    
+    <ul class="key-findings">
+      
+      <li>Introduces refinement-first discrete flow generation for fragmented SMILES</li>
+      
+      <li>Establishes a stronger quality-diversity frontier in de novo generation</li>
+      
+      <li>Sets a new state of the art on practical molecular optimization benchmarks</li>
+      
+    </ul>
+    
+  </div>
+  
+  <div class="paper-entry">
+    <div class="paper-date">2025-09-26</div>
+    <div class="paper-title">POLO: Preference-Guided Multi-Turn Reinforcement Learning for Lead Optimization</div>
+    
+    <div class="paper-authors">['Ziqing Wang', 'Yibo Wen', 'William Pattie', 'Xiao Luo', 'Weimin Wu', 'Jerry Yao-Chieh Hu', 'Abhishek Pandey', 'Han Liu', 'Kaize Ding']</div>
+    
+    
+    <div class="paper-doi"><a href="https://doi.org/http://arxiv.org/abs/2509.21737v1">http://arxiv.org/abs/2509.21737v1</a></div>
+    
+    <div class="paper-summary">POLO improves sample efficiency in lead optimization by training on full optimization trajectories instead of isolated single-turn edits. Its Preference-Guided Policy Optimization objective combines trajectory-level rewards with turn-level preference ranking signals. The paper reports strong gains, including 84% success on single-property tasks and 50% on multi-property tasks with only 500 oracle calls.</div>
+    
+    <ul class="key-findings">
+      
+      <li>Learns from complete optimization trajectories for better chemical search behavior</li>
+      
+      <li>Combines dense turn-level preferences with trajectory-level reinforcement signals</li>
+      
+      <li>Delivers large sample-efficiency gains under tight oracle-evaluation budgets</li>
+      
+    </ul>
+    
+  </div>
+  
+
+  <div class="date-group-header">April 2025</div>
+  
+  <div class="paper-entry">
+    <div class="paper-date">2025-04-08</div>
+    <div class="paper-title">DMol: A Highly Efficient and Chemical Motif-Preserving Molecule Generation Platform</div>
+    
+    <div class="paper-authors">['Peizhi Niu', 'Yu-Hsiang Wang', 'Vishal Rana', 'Chetan Rupakheti', 'Abhishek Pandey', 'Olgica Milenkovic']</div>
+    
+    
+    <div class="paper-doi"><a href="https://doi.org/http://arxiv.org/abs/2504.06312v3">http://arxiv.org/abs/2504.06312v3</a></div>
+    
+    <div class="paper-summary">DMol presents a graph diffusion platform designed for faster and more valid small-molecule generation. Compared to prior baselines, it improves validity, cuts required diffusion steps by at least 10x, and reduces runtime by around half. A compressed motif-aware variant further boosts validity and novelty while simplifying generation over ring-rich chemistry.</div>
+    
+    <ul class="key-findings">
+      
+      <li>Improves validity over strong graph diffusion baselines</li>
+      
+      <li>Reduces diffusion steps by at least 10x with major runtime savings</li>
+      
+      <li>Motif-compressed variant further improves validity and novelty</li>
+      
+    </ul>
+    
+  </div>
+  
+
+  <div class="date-group-header">January 2025</div>
+  
+  <div class="paper-entry">
+    <div class="paper-date">2025-01-10</div>
+    <div class="paper-title">GenMol: A Drug Discovery Generalist with Discrete Diffusion</div>
+    
+    <div class="paper-authors">['Seul Lee', 'Karsten Kreis', 'Srimukh Prasad Veccham', 'Meng Liu', 'Danny Reidenbach', 'Yuxing Peng', 'Saee Paliwal', 'Weili Nie', 'Arash Vahdat']</div>
+    
+    
+    <div class="paper-doi"><a href="https://doi.org/http://arxiv.org/abs/2501.06158v3">http://arxiv.org/abs/2501.06158v3</a></div>
+    
+    <div class="paper-summary">GenMol is a single discrete diffusion model that supports multiple drug discovery tasks, including de novo generation, fragment-constrained generation, hit generation, and lead optimization. It uses fragment-level SAFE sequences and remasking to efficiently explore and optimize molecular structures. The work reports state-of-the-art task performance while providing a unified model design instead of task-specific pipelines.</div>
+    
+    <ul class="key-findings">
+      
+      <li>Unifies multiple molecular design tasks in one diffusion framework</li>
+      
+      <li>Uses fragment remasking and molecular context guidance for optimization</li>
+      
+      <li>Achieves state-of-the-art results on goal-directed hit generation and lead optimization</li>
+      
+    </ul>
+    
+  </div>
+  
+
+</div>
+
+</body>
+</html>

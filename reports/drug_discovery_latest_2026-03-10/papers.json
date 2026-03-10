@@ -1,0 +1,152 @@
+[
+  {
+    "title": "FuseDiff: Symmetry-Preserving Joint Diffusion for Dual-Target Structure-Based Drug Design",
+    "authors": [
+      "Jianliang Wu",
+      "Anjie Qiao",
+      "Zhen Wang",
+      "Zhewei Wei",
+      "Sheng Chen"
+    ],
+    "date": "2026-03-05",
+    "abstract": "Dual-target structure-based drug design aims to generate a single ligand together with two pocket-specific binding poses, each compatible with a corresponding target pocket, enabling polypharmacological therapies with improved efficacy and reduced resistance. Existing approaches typically rely on staged pipelines, which either decouple the two poses via conditional-independence assumptions or enforce overly rigid correlations, and therefore fail to jointly generate two target-specific binding modes. To address this, we propose FuseDiff, an end-to-end diffusion model that jointly generates a ligand molecular graph and two pocket-specific binding poses conditioned on both pockets. FuseDiff features a message-passing backbone with Dual-target Local Context Fusion (DLCF), which fuses each ligand atom's local context from both pockets to enable expressive joint modeling while preserving the desired symmetries. Together with explicit bond generation, FuseDiff enforces topological consistency across the two poses under a shared graph while allowing target-specific geometric adaptation in each pocket. To support principled training and evaluation, we derive a dual-target training set and use an independent held-out test set for evaluation. Experiments on the benchmark and a real-world dual-target system show that FuseDiff achieves state-of-the-art docking performance and enables the first systematic assessment of dual-target pose quality prior to docking-based pose search.",
+    "doi": "http://arxiv.org/abs/2603.05567v1"
+  },
+  {
+    "title": "Mozi: Governed Autonomy for Drug Discovery LLM Agents",
+    "authors": [
+      "He Cao",
+      "Siyu Liu",
+      "Fan Zhang",
+      "Zijing Liu",
+      "Hao Li",
+      "Bin Feng",
+      "Shengyuan Bai",
+      "Leqing Chen",
+      "Kai Xie",
+      "Yu Li"
+    ],
+    "date": "2026-03-04",
+    "abstract": "Tool-augmented large language model (LLM) agents promise to unify scientific reasoning with computation, yet their deployment in high-stakes domains like drug discovery is bottlenecked by two critical barriers: unconstrained tool-use governance and poor long-horizon reliability. In dependency-heavy pharmaceutical pipelines, autonomous agents often drift into irreproducible trajectories, where early-stage hallucinations multiplicatively compound into downstream failures. To overcome this, we present Mozi, a dual-layer architecture that bridges the flexibility of generative AI with the deterministic rigor of computational biology. Layer A (Control Plane) establishes a governed supervisor--worker hierarchy that enforces role-based tool isolation, limits execution to constrained action spaces, and drives reflection-based replanning. Layer B (Workflow Plane) operationalizes canonical drug discovery stages -- from Target Identification to Lead Optimization -- as stateful, composable skill graphs. This layer integrates strict data contracts and strategic human-in-the-loop (HITL) checkpoints to safeguard scientific validity at high-uncertainty decision boundaries.   Operating on the design principle of ``free-form reasoning for safe tasks, structured execution for long-horizon pipelines,'' Mozi provides built-in robustness mechanisms and trace-level audibility to completely mitigate error accumulation. We evaluate Mozi on PharmaBench, a curated benchmark for biomedical agents, demonstrating superior orchestration accuracy over existing baselines. Furthermore, through end-to-end therapeutic case studies, we demonstrate Mozi's ability to navigate massive chemical spaces, enforce stringent toxicity filters, and generate highly competitive in silico candidates, effectively transforming the LLM from a fragile conversationalist into a reliable, governed co-scientist.",
+    "doi": "http://arxiv.org/abs/2603.03655v1"
+  },
+  {
+    "title": "Designing the Haystack: Programmable Chemical Space for Generative Molecular Discovery",
+    "authors": [
+      "Yuchen Zhu",
+      "Donghai Zhao",
+      "Yangyang Zhang",
+      "Yitong Li",
+      "Xiaorui Wang",
+      "Shuwang Li",
+      "Yue Kong",
+      "Beichen Zhang",
+      "Ricki Chen",
+      "Chang Liu",
+      "Xingcai Zhang",
+      "Tingjun Hou",
+      "Chang-Yu Hsieh"
+    ],
+    "date": "2026-02-28",
+    "abstract": "Chemical space exploration underlies drug discovery, yet most generative models treat chemical space as a fixed, implicitly learned distribution, focusing on sampling molecules rather than deliberately designing the space itself. We introduce SpaceGFN, a generative framework that elevates chemical space to a programmable computational object: a controllable degree of freedom enabling explicit construction and adaptive traversal of structured molecular universes. SpaceGFN decouples space definition from exploration. Users specify building blocks and reaction rules to construct chemically and synthetically coherent spaces, while a GFlowNet performs efficient, property-biased sampling within them. In Discovery mode, we demonstrate programmable space design through two strategies. A pseudo-natural product space assembles natural product-like architectures. An evolution-inspired (Evo) space recombines endogenous metabolite fragments via enzyme-consistent transformations, introducing an evolutionary prior into chemical generation. This bias yields favorable shifts in predicted metabolic and toxicological profiles while preserving pharmacological diversity, supported by broad docking enrichment across therapeutic targets. In Editing mode, SpaceGFN enables reaction-consistent lead optimization through a curated toolkit of executable synthetic transformations, allowing local, synthesis-aware modification of existing compounds instead of unrestricted graph mutation. Across 96 drug targets, SpaceGFN achieves strong optimization performance while maintaining structural diversity under synthetic constraints. By integrating programmable chemical universe construction with flow-based exploration and reaction-level editing, SpaceGFN establishes a general paradigm for deliberate navigation of therapeutic chemical space.",
+    "doi": "http://arxiv.org/abs/2603.00614v1"
+  },
+  {
+    "title": "Toward Closed-loop Molecular Discovery via Language Model, Property Alignment and Strategic Search",
+    "authors": [
+      "Junkai Ji",
+      "Zhangfan Yang",
+      "Dong Xu",
+      "Ruibin Bai",
+      "Jianqiang Li",
+      "Tingjun Hou",
+      "Zexuan Zhu"
+    ],
+    "date": "2025-12-10",
+    "abstract": "Drug discovery is a time-consuming and expensive process, with traditional high-throughput and docking-based virtual screening hampered by low success rates and limited scalability. Recent advances in generative modelling, including autoregressive, diffusion, and flow-based approaches, have enabled de novo ligand design beyond the limits of enumerative screening. Yet these models often suffer from inadequate generalization, limited interpretability, and an overemphasis on binding affinity at the expense of key pharmacological properties, thereby restricting their translational utility. Here we present Trio, a molecular generation framework integrating fragment-based molecular language modeling, reinforcement learning, and Monte Carlo tree search, for effective and interpretable closed-loop targeted molecular design. Through the three key components, Trio enables context-aware fragment assembly, enforces physicochemical and synthetic feasibility, and guides a balanced search between the exploration of novel chemotypes and the exploitation of promising intermediates within protein binding pockets. Experimental results show that Trio reliably achieves chemically valid and pharmacologically enhanced ligands, outperforming state-of-the-art approaches with improved binding affinity (+7.85%), drug-likeness (+11.10%) and synthetic accessibility (+12.05%), while expanding molecular diversity more than fourfold. By combining generalization, plausibility, and interpretability, Trio establishes a closed-loop generative paradigm that redefines how chemical space can be navigated, offering a transformative foundation for the next era of AI-driven drug discovery.",
+    "doi": "http://arxiv.org/abs/2512.09566v2"
+  },
+  {
+    "title": "FRAGMENTA: End-to-end Fragmentation-based Generative Model with Agentic Tuning for Drug Lead Optimization",
+    "authors": [
+      "Yuto Suzuki",
+      "Paul Awolade",
+      "Daniel V. LaBarbera",
+      "Farnoush Banaei-Kashani"
+    ],
+    "date": "2025-11-25",
+    "abstract": "Molecule generation using generative AI is vital for drug discovery, yet class-specific datasets often contain fewer than 100 training examples. While fragment-based models handle limited data better than atom-based approaches, existing heuristic fragmentation limits diversity and misses key fragments. Additionally, model tuning typically requires slow, indirect collaboration between medicinal chemists and AI engineers. We introduce FRAGMENTA, an end-to-end framework for drug lead optimization comprising: 1) a novel generative model that reframes fragmentation as a \"vocabulary selection\" problem, using dynamic Q-learning to jointly optimize fragmentation and generation; and 2) an agentic AI system that refines objectives via conversational feedback from domain experts. This system removes the AI engineer from the loop and progressively learns domain knowledge to eventually automate tuning. In real-world cancer drug discovery experiments, FRAGMENTA's Human-Agent configuration identified nearly twice as many high-scoring molecules as baselines. Furthermore, the fully autonomous Agent-Agent system outperformed traditional Human-Human tuning, demonstrating the efficacy of agentic tuning in capturing expert intent.",
+    "doi": "http://arxiv.org/abs/2511.20510v2"
+  },
+  {
+    "title": "SiDGen: Structure-informed Diffusion for Generative modeling of Ligands for Proteins",
+    "authors": [
+      "Samyak Sanghvi",
+      "Nishant Ranjan",
+      "Tarak Karmakar"
+    ],
+    "date": "2025-11-12",
+    "abstract": "Structure-based drug design (SBDD) faces a fundamental scaling fidelity dilemma: rich pocket-aware conditioning captures interaction geometry but can be costly, often scales quadratically ($O(L^2)$) or worse with protein length ($L$), while efficient sequence-only conditioning can miss key interaction structure. We propose SiDGen, a structure-informed discrete diffusion framework that resolves this trade-off through a Topological Information Bottleneck (TIB). SiDGen leverages a learned, soft assignment mechanism to compress residue-level protein representations into a compact bottleneck enabling downstream pairwise computations on the coarse grid ($O(L^2/s^2)$). This design reduces memory and computational cost without compromising generative accuracy. Our approach achieves state-of-the-art performance on CrossDocked2020 and DUD-E benchmarks while significantly reducing pairwise-tensor memory. SiDGen bridges the gap between sequence-based efficiency and pocket-aware conditioning, offering a scalable path for high-throughput structure-based discovery.",
+    "doi": "http://arxiv.org/abs/2511.09529v3"
+  },
+  {
+    "title": "Refine Drugs, Don't Complete Them: Uniform-Source Discrete Flows for Fragment-Based Drug Discovery",
+    "authors": [
+      "Benno Kaech",
+      "Luis Wyss",
+      "Karsten Borgwardt",
+      "Gianvito Grasso"
+    ],
+    "date": "2025-09-30",
+    "abstract": "We introduce InVirtuoGen, a discrete flow generative model for fragmented SMILES for de novo and fragment-constrained generation, and target-property/lead optimization of small molecules. The model learns to transform a uniform source over all possible tokens into the data distribution. Unlike masked models, its training loss accounts for predictions on all sequence positions at every denoising step, shifting the generation paradigm from completion to refinement, and decoupling the number of sampling steps from the sequence length. For \\textit{de novo} generation, InVirtuoGen achieves a stronger quality-diversity pareto frontier than prior fragment-based models and competitive performance on fragment-constrained tasks. For property and lead optimization, we propose a hybrid scheme that combines a genetic algorithm with a Proximal Property Optimization fine-tuning strategy adapted to discrete flows. Our approach sets a new state-of-the-art on the Practical Molecular Optimization benchmark, measured by top-10 AUC across tasks, and yields higher docking scores in lead optimization than previous baselines. InVirtuoGen thus establishes a versatile generative foundation for drug discovery, from early hit finding to multi-objective lead optimization. We further contribute to open science by releasing pretrained checkpoints and code, making our results fully reproducible\\footnote{https://github.com/invirtuolabs/InVirtuoGen_results}.",
+    "doi": "http://arxiv.org/abs/2509.26405v1"
+  },
+  {
+    "title": "POLO: Preference-Guided Multi-Turn Reinforcement Learning for Lead Optimization",
+    "authors": [
+      "Ziqing Wang",
+      "Yibo Wen",
+      "William Pattie",
+      "Xiao Luo",
+      "Weimin Wu",
+      "Jerry Yao-Chieh Hu",
+      "Abhishek Pandey",
+      "Han Liu",
+      "Kaize Ding"
+    ],
+    "date": "2025-09-26",
+    "abstract": "Lead optimization in drug discovery requires efficiently navigating vast chemical space through iterative cycles to enhance molecular properties while preserving structural similarity to the original lead compound. Despite recent advances, traditional optimization methods struggle with sample efficiency-achieving good optimization performance with limited oracle evaluations. Large Language Models (LLMs) provide a promising approach through their in-context learning and instruction following capabilities, which align naturally with these iterative processes. However, existing LLM-based methods fail to leverage this strength, treating each optimization step independently. To address this, we present POLO (Preference-guided multi-turn Optimization for Lead Optimization), which enables LLMs to learn from complete optimization trajectories rather than isolated steps. At its core, POLO introduces Preference-Guided Policy Optimization (PGPO), a novel reinforcement learning algorithm that extracts learning signals at two complementary levels: trajectory-level optimization reinforces successful strategies, while turn-level preference learning provides dense comparative feedback by ranking intermediate molecules within each trajectory. Through this dual-level learning from intermediate evaluation, POLO achieves superior sample efficiency by fully exploiting each costly oracle call. Extensive experiments demonstrate that POLO achieves 84% average success rate on single-property tasks (2.3x better than baselines) and 50% on multi-property tasks using only 500 oracle evaluations, significantly advancing the state-of-the-art in sample-efficient molecular optimization.",
+    "doi": "http://arxiv.org/abs/2509.21737v1"
+  },
+  {
+    "title": "DMol: A Highly Efficient and Chemical Motif-Preserving Molecule Generation Platform",
+    "authors": [
+      "Peizhi Niu",
+      "Yu-Hsiang Wang",
+      "Vishal Rana",
+      "Chetan Rupakheti",
+      "Abhishek Pandey",
+      "Olgica Milenkovic"
+    ],
+    "date": "2025-04-08",
+    "abstract": "We introduce a new graph diffusion model for small molecule generation, DMol, which outperforms the state-of-the-art DiGress model in terms of validity by roughly 1.5% across all benchmarking datasets while reducing the number of diffusion steps by at least 10-fold, and the running time to roughly one half. The performance improvements are a result of a careful change in the objective function and a graph noise scheduling approach which, at each diffusion step, allows one to only change a subset of nodes of varying size in the molecule graph. Another relevant property of the method is that it can be easily combined with junction-tree-like graph representations that arise by compressing a collection of relevant ring structures into supernodes. Unlike classical junction-tree techniques that involve VAEs and require complicated reconstruction steps, compressed DMol directly performs graph diffusion on a graph that compresses only a carefully selected set of frequent carbon rings into supernodes, which results in straightforward sample generation. This compressed DMol method offers additional validity improvements over generic DMol of roughly 2%, increases the novelty of the method, and further improves the running time due to reductions in the graph size.",
+    "doi": "http://arxiv.org/abs/2504.06312v3"
+  },
+  {
+    "title": "GenMol: A Drug Discovery Generalist with Discrete Diffusion",
+    "authors": [
+      "Seul Lee",
+      "Karsten Kreis",
+      "Srimukh Prasad Veccham",
+      "Meng Liu",
+      "Danny Reidenbach",
+      "Yuxing Peng",
+      "Saee Paliwal",
+      "Weili Nie",
+      "Arash Vahdat"
+    ],
+    "date": "2025-01-10",
+    "abstract": "Drug discovery is a complex process that involves multiple stages and tasks. However, existing molecular generative models can only tackle some of these tasks. We present Generalist Molecular generative model (GenMol), a versatile framework that uses only a single discrete diffusion model to handle diverse drug discovery scenarios. GenMol generates Sequential Attachment-based Fragment Embedding (SAFE) sequences through non-autoregressive bidirectional parallel decoding, thereby allowing the utilization of a molecular context that does not rely on the specific token ordering while having better sampling efficiency. GenMol uses fragments as basic building blocks for molecules and introduces fragment remasking, a strategy that optimizes molecules by regenerating masked fragments, enabling effective exploration of chemical space. We further propose molecular context guidance (MCG), a guidance method tailored for masked discrete diffusion of GenMol. GenMol significantly outperforms the previous GPT-based model in de novo generation and fragment-constrained generation, and achieves state-of-the-art performance in goal-directed hit generation and lead optimization. These results demonstrate that GenMol can tackle a wide range of drug discovery tasks, providing a unified and versatile approach for molecular design. Our code is available at https://github.com/NVIDIA-Digital-Bio/genmol.",
+    "doi": "http://arxiv.org/abs/2501.06158v3"
+  }
+]
